@@ -17,8 +17,8 @@ function howManyLightsabersDoYouOwn(name) {
   }
 }
 
-howManyLightsabersDoYouOwn("anyone else"); //should === 0
-howManyLightsabersDoYouOwn("Zach"); //should === 18
+// howManyLightsabersDoYouOwn("anyone else"); //should === 0
+// howManyLightsabersDoYouOwn("Zach"); //should === 18
 
 //EVENLY DIVIDEABLE?
 function evenlyDivide (value) {
@@ -30,7 +30,7 @@ function evenlyDivide (value) {
   }
   return arr;
 }
-evenlyDivide(30);
+//evenlyDivide(30);
 
 //LAST
 function last(arr) {
@@ -54,39 +54,63 @@ function palindrome (a) {
    }
    return pal;
 }
-palindrome('Anna');
+//palindrome('Anna');
 
 function typing(val) {
   return (typeof val + "=" + val);
 }
 
-function reverse(str) {
-  //(String.prototype.reverse().toLowerCase());
-  //
-  return str.reverse().toLowerCase();
-}
+/**
+ * REVERSE STRING
+ * Create a function named "reverse" for the String prototype 
+ * that will allow the following functionality:
+ */
+ //(String.prototype.reverse().toLowerCase());
+String.prototype.reverse = function(){
+    var arr =[];
+    for (var i=this.length-1; i>=0; i--) {
+      arr.push(this[i].toLowerCase());
+    }
+
+    return arr;
+};
+
+// "String".reverse();  
 
 function squareRoot(num) {
-  return Math.sqrt(num);
+  if (Math.floor(Math.sqrt(num) ) == Math.ceil(Math.sqrt(num) ))
+    return true;
+  else 
+    return false;
 }
+//squareRoot(100);
+//squareRoot(4096) 
 
+/**
+ * SHORT LONG SHORT
+ * Given 2 strings, a and b, return a string of the form short+long+short,
+ *  with the shorter string on the outside and the longer string on the inside. 
+ * The strings will not be the same length, but they may be empty (length0).
+ */
 function solution(a,b) {
-  if (a>b) 
+  if (a.length>b.length) 
     return b+a+b;
   
   else 
     return a+b+a;
 }
 
+// solution("1", "22"); // returns "1221"
+// solution("22", "1"); // returns "1221"
 
-
-var ghost =  function() {
-    this.color =
-    function () {
+//Return random colors among 4 colors
+var ghost = {
+    
+    color : function() {
         var c = ["white" , "yellow" , "purple" , "red"];
         var i = Math.floor(Math.random() * 4);
         return c[i];
-    };
+    }
 };
  
-ghost.color(); //=> "white" or "yellow" or "purple" or "red"
+//ghost.color(); //=> "white" or "yellow" or "purple" or "red"
